@@ -1,0 +1,108 @@
+/* Configuración general */
+body {
+    background-color: #fff; /* Fondo blanco exterior */
+    font-family: Arial, sans-serif;
+}
+
+.contenedor {
+    width: 95%;
+    margin: 20px auto;
+    background-color: #f2e9c9; /* Fondo crema de la imagen */
+    padding: 20px;
+    border: 1px solid red; /* Borde rojo sutil que se ve en la imagen */
+}
+
+h2 {
+    text-align: center;
+    color: #555;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* Barra de búsqueda */
+.barra__buscador {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.input__text {
+    padding: 8px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Estilo de Botones */
+.btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    margin-left: 5px;
+    display: inline-block;
+}
+
+/* Botón Buscar (Azul) */
+input[name="btn_buscar"] {
+    background-color: #0071a1;
+}
+
+/* Botón Nuevo (Verde) */
+.btn__nuevo {
+    background-color: #1b6331;
+}
+
+/* Tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fdfdfd;
+}
+
+table tr td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+/* Encabezado Naranja */
+.head {
+    background-color: #ff7f27; /* Naranja de la imagen */
+    color: white;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.head td {
+    text-align: center;
+    border: 1px solid #e06b1d;
+}
+
+/* Botones de Acción dentro de la tabla */
+.btn__update, .btn__delete {
+    display: block;
+    text-align: center;
+    padding: 5px;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+.btn__update {
+    background-color: #1b6331; /* Verde oscuro */
+}
+
+.btn__delete {
+    background-color: #700000; /* Guinda/Rojo oscuro */
+}
+
+/* Ajuste de columnas de acción */
+td:has(.btn__update), td:has(.btn__delete) {
+    width: 100px;
+}
