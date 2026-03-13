@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-03-2026 a las 22:23:37
+-- Tiempo de generación: 13-03-2026 a las 02:40:43
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -164,15 +164,20 @@ CREATE TABLE `clientes` (
   `documento_v` int(30) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `apellido` varchar(50) NOT NULL,
-  `id_ciudad` int(11) DEFAULT NULL
+  `id_ciudad` int(11) DEFAULT NULL,
+  `id_g` int(11) DEFAULT NULL,
+  `id_genero` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `clientes`
 --
 
-INSERT INTO `clientes` (`documento_v`, `nombre`, `apellido`, `id_ciudad`) VALUES
-(1110461599, 'jhon', 'arias', 100);
+INSERT INTO `clientes` (`documento_v`, `nombre`, `apellido`, `id_ciudad`, `id_g`, `id_genero`) VALUES
+(66373, 'neider', 'lozano', 29, NULL, 3),
+(8847878, 'juan', 'angarita', 29, NULL, 1),
+(238949589, 'maria karina', 'arias', 29, NULL, 2),
+(1110461599, 'jhon', 'arias', 100, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -223,6 +228,26 @@ INSERT INTO `departamento` (`id_departamento`, `nombre`) VALUES
 (31, 'Vaupés'),
 (32, 'Vichada'),
 (33, 'Bogotá D.C.');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `genero`
+--
+
+CREATE TABLE `genero` (
+  `id_genero` int(10) NOT NULL,
+  `nombre_genero` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `genero`
+--
+
+INSERT INTO `genero` (`id_genero`, `nombre_genero`) VALUES
+(1, 'masculino'),
+(2, 'femenino'),
+(3, 'otro');
 
 -- --------------------------------------------------------
 
@@ -278,6 +303,12 @@ ALTER TABLE `departamento`
   ADD PRIMARY KEY (`id_departamento`);
 
 --
+-- Indices de la tabla `genero`
+--
+ALTER TABLE `genero`
+  ADD PRIMARY KEY (`id_genero`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -306,6 +337,12 @@ ALTER TABLE `departamento`
   MODIFY `id_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
+-- AUTO_INCREMENT de la tabla `genero`
+--
+ALTER TABLE `genero`
+  MODIFY `id_genero` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -331,3 +368,4 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
