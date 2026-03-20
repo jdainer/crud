@@ -1,22 +1,21 @@
 <?php
-$host = getenv('DB_HOST') ?: 'gateway01.us-east-1.prod.aws.tidbcloud.com';
+$host = getenv('DB_HOST');
 $port = getenv('DB_PORT') ?: '4000';
-$db   = getenv('DB_NAME') ?: 'test';
-$user = getenv('DB_USER') ?: 'WFR6zs7iTo8Mfti.root';
-$pass = getenv('DB_PASS'); // Asegúrate de que esta variable esté en Render
+$db   = getenv('DB_NAME');
+$user = getenv('DB_USER');
+$pass = getenv('DB_PASS');
 
 try {
-    // ESTA ES LA PARTE CLAVE: Añadimos el array de opciones para SSL
+    // Estas opciones son OBLIGATORIAS para TiDB Cloud
     $options = array(
         PDO::MYSQL_ATTR_SSL_CA => "/etc/ssl/certs/ca-certificates.crt",
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
     );
 
-    $pdo = new PDO("mysql:host=$host;port=$port;dbname=$db;charset=utf8mb4", $user, $pass, $options);
+    $con = new PDO("mysql:host=$host;port=$port;dbname=$db;charset=utf8mb4", $user, $pass, $options);
     
-    // Asignamos $pdo a $con para que tu index.php no falle en la línea 11
-    $con = $pdo; 
-
+    // Si llega aquí, es porque ya funcionó
 } catch (PDOException $e) {
     die("Error de conexión: " . $e->getMessage());
 }
