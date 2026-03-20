@@ -1,10 +1,10 @@
 <?php
-// Esto lee lo que pusiste en el panel de Render
-$host = getenv('DB_HOST');
-$port = getenv('DB_PORT');
-$db   = getenv('DB_NAME');
-$user = getenv('DB_USER');
-$pass = getenv('DB_PASS');
+// Datos directos para no pelear más con el panel de Render
+$host = 'gateway01.us-east-1.prod.aws.tidbcloud.com';
+$port = '4000';
+$db   = 'test';
+$user = 'WFR6zs7jTo8Mf1j.root';
+$pass = 'HcliKJ3wcAPOznXu'; // <--- PEGA TU CLAVE AQUÍ
 
 try {
     $options = array(
@@ -12,11 +12,10 @@ try {
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
     );
 
-    // Si $host está vacío, dará el error que te sale ahora. 
-    // Por eso es vital el paso de "Link Environment Group" arriba.
-    $con = new PDO("mysql:host=$host;port=$port;dbname=$db", $user, $pass, $options);
+    $con = new PDO("mysql:host=$host;port=$port;dbname=$db;charset=utf8mb4", $user, $pass, $options);
     
+    // Si llega aquí, es que por fin entró
 } catch (PDOException $e) {
-    die("Error de conexión: " . $e->getMessage());
+    echo "Error de conexión: " . $e->getMessage();
 }
 ?>
